@@ -15,7 +15,6 @@ export const GAME_STATUS = {
 };
 
 function Game() {
-  const [input, setInput] = React.useState("");
   const [guesses, setGuesses] = React.useState([]);
   const [gameStatus, setGameStatus] = React.useState(GAME_STATUS.NEW);
 
@@ -38,7 +37,6 @@ function Game() {
   const handleRestart = () => {
     setAnswer(sample(WORDS));
     setGuesses([]);
-    setInput("");
     setGameStatus(GAME_STATUS.NEW);
   };
 
@@ -56,10 +54,7 @@ function Game() {
       <GuessResults guesses={guesses} answer={answer} />
       <Form
         disabled={isGameOver}
-        input={input}
-        setInput={setInput}
         addGuess={addGuess}
-        handleRestart={handleRestart}
       />
     </>
   );
